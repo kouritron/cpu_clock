@@ -84,14 +84,13 @@ int main(int argc, char ** argv)
 	
 	
 	// Calculate CPU freq.
-	
-	
 	double frqInMHz = 0;
 	
 	printf("Calculating CPU frequency. Plz stand by ...\n");
 	
 	// burn the CPU a little bit. Assuming the CPU scaling algorithms (in hardware usually), 
-	// will scale up the CPU when it is being utilized 
+	// will scale up the CPU when it is being utilized, Dont forget to compile with no optimizations
+	// otherwise gcc may take this out realizing it has no side effects for the rest of the code.
 	volatile int ignore=0;
 	for (ignore=0; ignore < 100000000; ignore++)
 	{
@@ -102,7 +101,6 @@ int main(int argc, char ** argv)
 	reset_counter();
 	sleep(sleep_time);
 	frqInMHz = get_counter() / (sleep_time * 1000000.0);
-	
 	
 	printf("CPU frequency appears to be:\n%f Mhz.\n", frqInMHz);
 	
