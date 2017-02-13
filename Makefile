@@ -5,9 +5,9 @@ CC=gcc
 CFLAGS=-g -Wall -Wextra -O0 
 
 
-CPUFreq: CPUFreq.c
-	$(CC) $(CFLAGS) -o CPUFreq CPUFreq.c
+cpu_clock: cpu_clock.c
+	$(CC) $(CFLAGS) -o cpu_clock cpu_clock.c
 
 
 clean:
-	rm -f CPUFreq
+	rm -f cpu_clock

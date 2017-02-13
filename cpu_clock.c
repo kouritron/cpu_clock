@@ -1,4 +1,4 @@
-// CPUFreq.c 
+// cpu_clock.c 
 //
 // small program to Calculate cpu clock from user space. 
 //
@@ -61,8 +61,8 @@ uint64_t get_counter()
 int main(int argc, char ** argv)
 {
 	// we get this from commandline, program should be called like this
-	// $ ./CPUFreq 2
-	// $ ./CPUFreq 1
+	// $ ./cpu_clock 2
+	// $ ./cpu_clock 1
 	// 1 and 2 are the sleep times. default is 1 second.
 	
 	int sleep_time = 1;
@@ -83,10 +83,10 @@ int main(int argc, char ** argv)
 	}
 	
 	
-	// Calculate CPU freq.
+	// Calculate CPU clock.
 	double frqInMHz = 0;
 	
-	printf("Calculating CPU frequency. Plz stand by ...\n");
+	printf("Calculating CPU clock. Plz stand by ...\n");
 	
 	// burn the CPU a little bit. Assuming the CPU scaling algorithms (in hardware usually), 
 	// will scale up the CPU when it is being utilized, Dont forget to compile with no optimizations
@@ -102,7 +102,7 @@ int main(int argc, char ** argv)
 	sleep(sleep_time);
 	frqInMHz = get_counter() / (sleep_time * 1000000.0);
 	
-	printf("CPU frequency appears to be:\n%f Mhz.\n", frqInMHz);
+	printf("CPU clock appears to be:\n%f Mhz.\n", frqInMHz);
 	
 	return EXIT_SUCCESS;
 }
